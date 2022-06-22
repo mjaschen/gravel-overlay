@@ -419,6 +419,53 @@
       "paint": {"line-color": "rgba(28, 160, 210, 0.48)"}
     },
     {
+      "id": "road_gravel_perfect_surface-case",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "filter": [
+        "all",
+        ["==", "$type", "LineString"],
+        ["in", "class", "minor", "residential"],
+        ["in", "tracktype", "grade2", "grade3"],
+        ["in", "surface", "gravel", "compacted", "fine_gravel"]
+      ],
+      "layout": {
+        "line-cap": "square",
+        "line-join": "bevel",
+        "visibility": "visible"
+      },
+      "paint": {
+        "line-color": "rgba(255, 255, 255, 1)",
+        "line-dasharray": ["literal", [1, 0]],
+        "line-width": {"base": 1.55, "stops": [[4, 0.25], [20, 35]]},
+        "line-offset": 4
+      }
+    },
+    {
+      "id": "road_gravel_perfect_surface",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "filter": [
+        "all",
+        ["==", "$type", "LineString"],
+        ["in", "class", "minor", "residential"],
+        ["in", "surface", "gravel", "compacted", "fine_gravel"]
+      ],
+      "layout": {
+        "line-cap": "square",
+        "line-join": "bevel",
+        "visibility": "visible"
+      },
+      "paint": {
+        "line-color": "rgba(235, 6, 158, 1)",
+        "line-width": {"base": 1.55, "stops": [[4, 0.25], [20, 25]]},
+        "line-dasharray": [1, 0],
+        "line-offset": 4
+      }
+    },
+    {
       "id": "road_debug",
       "type": "line",
       "source": "openmaptiles",
