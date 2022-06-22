@@ -546,7 +546,8 @@
         "all",
         ["==", "$type", "LineString"],
         ["in", "class", "minor", "service", "track", "path", "residential"],
-        ["in", "surface", "sett", "cobblestone", "unhewn_cobblestone"]
+        ["in", "surface", "sett", "cobblestone", "unhewn_cobblestone"],
+        ["!in", "service", "driveway"]
       ],
       "layout": {
         "line-cap": "round",
@@ -569,18 +570,19 @@
         "all",
         ["==", "$type", "LineString"],
         ["in", "class", "minor", "service", "track", "path", "residential"],
-        ["in", "surface", "sett", "cobblestone", "unhewn_cobblestone"]
+        ["in", "surface", "sett", "cobblestone", "unhewn_cobblestone"],
+        ["!in", "service", "driveway"]
       ],
       "layout": {
-        "line-cap": "square",
+        "line-cap": "butt",
         "line-join": "round",
         "visibility": "visible"
       },
       "paint": {
         "line-color": "rgba(245, 255, 0, 1)",
-        "line-width": {"base": 1.55, "stops": [[4, 0.25], [20, 26]]},
-        "line-dasharray": [2, 2],
-        "line-offset": 4
+        "line-width": {"base": 1.55, "stops": [[4, 0.25], [20, 24]]},
+        "line-offset": 4,
+        "line-dasharray": [2, 1]
       }
     },
     {
