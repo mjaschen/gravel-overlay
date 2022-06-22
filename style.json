@@ -19,7 +19,7 @@
       "id": "background",
       "type": "background",
       "layout": {"visibility": "none"},
-      "paint": {"background-color": "rgba(51, 42, 56, 1)"}
+      "paint": {"background-color": "rgba(189, 255, 210, 1)"}
     },
     {
       "id": "track_gravel_perfect_surface-case",
@@ -236,6 +236,41 @@
       }
     },
     {
+      "id": "track_grade2",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "filter": [
+        "all",
+        ["==", "$type", "LineString"],
+        ["==", "class", "track"],
+        ["==", "tracktype", "grade2"]
+      ],
+      "layout": {"visibility": "none"},
+      "paint": {
+        "line-color": "rgba(143, 102, 24, 1)",
+        "line-width": {"stops": [[10, 0.5], [14, 1.5]]},
+        "line-dasharray": [5, 1]
+      }
+    },
+    {
+      "id": "track_grade1",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "filter": [
+        "all",
+        ["==", "$type", "LineString"],
+        ["==", "class", "track"],
+        ["==", "tracktype", "grade1"]
+      ],
+      "layout": {"visibility": "none"},
+      "paint": {
+        "line-color": "rgba(143, 102, 24, 1)",
+        "line-width": {"stops": [[10, 0.5], [14, 1.5]]}
+      }
+    },
+    {
       "id": "path_gravel_ok",
       "type": "line",
       "source": "openmaptiles",
@@ -338,7 +373,7 @@
           "path"
         ]
       ],
-      "layout": {"visibility": "visible"},
+      "layout": {"visibility": "none"},
       "paint": {
         "line-color": "rgba(204, 204, 204, 1)",
         "line-width": {"stops": [[10, 0.5], [12, 1]]}
@@ -456,6 +491,7 @@
       "type": "fill",
       "source": "openmaptiles",
       "source-layer": "water",
+      "layout": {"visibility": "none"},
       "paint": {"fill-color": "rgba(121, 209, 250, 1)"}
     },
     {
@@ -463,6 +499,7 @@
       "type": "line",
       "source": "openmaptiles",
       "source-layer": "waterway",
+      "layout": {"visibility": "none"},
       "paint": {"line-color": "rgba(121, 209, 250, 1)"}
     }
   ],
