@@ -1,0 +1,417 @@
+{
+  "version": 8,
+  "name": "Gravel Overlay",
+  "metadata": {
+    "mapbox:autocomposite": false,
+    "mapbox:type": "template",
+    "maputnik:renderer": "mbgljs",
+    "openmaptiles:version": "3.x",
+    "openmaptiles:mapbox:owner": "openmaptiles",
+    "openmaptiles:mapbox:source:url": "mapbox://openmaptiles.4qljc88t"
+  },
+  "sources": {
+    "openmaptiles": {"type": "vector", "url": "http://localhost:8090"}
+  },
+  "sprite": "https://openmaptiles.github.io/osm-bright-gl-style/sprite",
+  "glyphs": "https://api.maptiler.com/fonts/{fontstack}/{range}.pbf?key={key}",
+  "layers": [
+    {
+      "id": "background",
+      "type": "background",
+      "layout": {"visibility": "none"},
+      "paint": {"background-color": "rgba(51, 42, 56, 1)"}
+    },
+    {
+      "id": "track_gravel_perfect-case",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "filter": [
+        "all",
+        ["==", "$type", "LineString"],
+        ["==", "class", "track"],
+        ["in", "tracktype", "grade2", "grade3"],
+        ["in", "smoothness", "good", "intermediate", "bad"],
+        ["in", "surface", "gravel", "compacted", "fine_gravel"]
+      ],
+      "layout": {"line-cap": "square", "line-join": "bevel"},
+      "paint": {
+        "line-color": "rgba(255, 255, 255, 1)",
+        "line-dasharray": ["literal", [1, 0]],
+        "line-width": {"base": 1.55, "stops": [[4, 0.25], [20, 35]]},
+        "line-offset": 4
+      }
+    },
+    {
+      "id": "track_gravel_perfect",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "filter": [
+        "all",
+        ["==", "$type", "LineString"],
+        ["==", "class", "track"],
+        ["in", "tracktype", "grade2", "grade3"],
+        ["in", "smoothness", "good", "intermediate", "bad"],
+        ["in", "surface", "gravel", "compacted", "fine_gravel"]
+      ],
+      "layout": {"line-cap": "square", "line-join": "bevel"},
+      "paint": {
+        "line-color": "rgba(235, 6, 158, 1)",
+        "line-width": {"base": 1.55, "stops": [[4, 0.25], [20, 25]]},
+        "line-dasharray": [1, 0],
+        "line-offset": 4
+      }
+    },
+    {
+      "id": "track_gravel_perfect-alt-case",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "filter": [
+        "all",
+        ["==", "$type", "LineString"],
+        ["==", "class", "track"],
+        ["in", "tracktype", "grade2"],
+        ["in", "smoothness", "good", "intermediate", "bad"]
+      ],
+      "layout": {"line-cap": "square", "line-join": "bevel"},
+      "paint": {
+        "line-color": "rgba(255, 255, 255, 1)",
+        "line-dasharray": ["literal", [1, 0]],
+        "line-width": {"base": 1.55, "stops": [[4, 0.25], [20, 35]]},
+        "line-offset": 4
+      }
+    },
+    {
+      "id": "track_gravel_perfect-alt",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "filter": [
+        "all",
+        ["==", "$type", "LineString"],
+        ["==", "class", "track"],
+        ["in", "tracktype", "grade2"],
+        ["in", "smoothness", "good", "intermediate", "bad"]
+      ],
+      "layout": {"line-cap": "square", "line-join": "bevel"},
+      "paint": {
+        "line-color": "rgba(235, 6, 158, 1)",
+        "line-width": {"base": 1.55, "stops": [[4, 0.25], [20, 25]]},
+        "line-dasharray": [1],
+        "line-offset": 4
+      }
+    },
+    {
+      "id": "track_gravel_ok_smoothness",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "filter": [
+        "all",
+        ["==", "$type", "LineString"],
+        ["==", "class", "track"],
+        ["in", "tracktype", "grade3"],
+        ["in", "smoothness", "good", "intermediate", "bad"]
+      ],
+      "layout": {"line-cap": "square", "line-join": "bevel"},
+      "paint": {
+        "line-color": "rgba(235, 6, 158, 1)",
+        "line-dasharray": ["literal", [4, 1]],
+        "line-width": {"base": 1.55, "stops": [[4, 0.25], [20, 15]]},
+        "line-offset": 4
+      }
+    },
+    {
+      "id": "track_gravel_ok",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "filter": [
+        "all",
+        ["==", "$type", "LineString"],
+        ["==", "class", "track"],
+        ["in", "tracktype", "grade3"],
+        ["in", "surface", "gravel", "fine_gravel", "compacted"]
+      ],
+      "layout": {"line-cap": "square", "line-join": "bevel"},
+      "paint": {
+        "line-color": "rgba(235, 6, 158, 1)",
+        "line-width": {"base": 1.55, "stops": [[4, 0.25], [20, 15]]},
+        "line-dasharray": [4, 1],
+        "line-offset": 4
+      }
+    },
+    {
+      "id": "track_bad_grade5_background",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "filter": [
+        "all",
+        ["==", "$type", "LineString"],
+        ["in", "class", "track"],
+        ["in", "tracktype", "grade5"]
+      ],
+      "layout": {
+        "line-cap": "square",
+        "line-join": "bevel",
+        "visibility": "visible"
+      },
+      "paint": {
+        "line-color": "rgba(255, 0, 0, 1)",
+        "line-width": {"base": 1.55, "stops": [[4, 0.25], [20, 15]]},
+        "line-dasharray": [1],
+        "line-offset": 4
+      }
+    },
+    {
+      "id": "track_bad_grade5",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "filter": [
+        "all",
+        ["==", "$type", "LineString"],
+        ["in", "class", "track"],
+        ["in", "tracktype", "grade5"]
+      ],
+      "layout": {
+        "line-cap": "square",
+        "line-join": "bevel",
+        "visibility": "visible"
+      },
+      "paint": {
+        "line-color": "rgba(255, 255, 0, 1)",
+        "line-width": {"base": 1.55, "stops": [[4, 0.25], [20, 20]]},
+        "line-dasharray": [2, 2],
+        "line-offset": 4
+      }
+    },
+    {
+      "id": "track_bad_sand_background",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "filter": [
+        "all",
+        ["==", "$type", "LineString"],
+        ["in", "class", "track"],
+        ["in", "tracktype", "grade4"],
+        ["in", "surface", "sand", "mud", "dirt", "grass"]
+      ],
+      "layout": {
+        "line-cap": "square",
+        "line-join": "bevel",
+        "visibility": "visible"
+      },
+      "paint": {
+        "line-color": "rgba(255, 0, 0, 1)",
+        "line-width": {"base": 1.55, "stops": [[4, 0.25], [20, 15]]},
+        "line-dasharray": [1],
+        "line-offset": 4
+      }
+    },
+    {
+      "id": "track_bad_sand",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "filter": [
+        "all",
+        ["==", "$type", "LineString"],
+        ["in", "class", "track"],
+        ["in", "tracktype", "grade4"],
+        ["in", "surface", "sand", "mud", "dirt", "grass"]
+      ],
+      "layout": {
+        "line-cap": "square",
+        "line-join": "bevel",
+        "visibility": "visible"
+      },
+      "paint": {
+        "line-color": "rgba(255, 255, 0, 1)",
+        "line-width": {"base": 1.55, "stops": [[4, 0.25], [20, 20]]},
+        "line-dasharray": [2, 2],
+        "line-offset": 4
+      }
+    },
+    {
+      "id": "path_gravel_perfect-case",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "filter": [
+        "all",
+        ["==", "$type", "LineString"],
+        ["in", "class", "path"],
+        ["in", "smoothness", "good", "intermediate", "bad"],
+        ["in", "surface", "gravel", "fine_gravel", "compacted"]
+      ],
+      "layout": {
+        "line-cap": "square",
+        "line-join": "bevel",
+        "visibility": "visible"
+      },
+      "paint": {
+        "line-color": "rgba(255, 255, 255, 1)",
+        "line-dasharray": [1],
+        "line-width": {"base": 1.55, "stops": [[4, 0.25], [20, 35]]},
+        "line-offset": 4
+      }
+    },
+    {
+      "id": "path_gravel_perfect",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "filter": [
+        "all",
+        ["==", "$type", "LineString"],
+        ["in", "class", "path"],
+        ["in", "smoothness", "good", "intermediate", "bad"],
+        ["in", "surface", "gravel", "fine_gravel", "compacted"]
+      ],
+      "layout": {
+        "line-cap": "square",
+        "line-join": "bevel",
+        "visibility": "visible"
+      },
+      "paint": {
+        "line-color": "rgba(235, 6, 158, 1)",
+        "line-dasharray": [1],
+        "line-width": {"base": 1.55, "stops": [[4, 0.25], [20, 25]]},
+        "line-offset": 4
+      }
+    },
+    {
+      "id": "path_gravel_ok",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "filter": [
+        "all",
+        ["==", "$type", "LineString"],
+        ["in", "class", "path"],
+        ["in", "smoothness", "good", "intermediate", "bad"]
+      ],
+      "layout": {
+        "line-cap": "square",
+        "line-join": "bevel",
+        "visibility": "visible"
+      },
+      "paint": {
+        "line-color": "rgba(235, 6, 158, 1)",
+        "line-dasharray": [2, 1],
+        "line-width": {"base": 1.55, "stops": [[4, 0.25], [20, 15]]},
+        "line-offset": 4
+      }
+    },
+    {
+      "id": "road_cobblestone-case",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "minzoom": 0,
+      "filter": [
+        "all",
+        ["==", "$type", "LineString"],
+        ["in", "class", "minor", "service", "track", "path", "residential"],
+        ["in", "surface", "sett", "cobblestone", "unhewn_cobblestone"]
+      ],
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round",
+        "visibility": "visible"
+      },
+      "paint": {
+        "line-color": "rgba(0, 0, 0, 1)",
+        "line-width": {"base": 1.55, "stops": [[4, 0.25], [20, 30]]},
+        "line-offset": 4
+      }
+    },
+    {
+      "id": "road_cobblestone",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "minzoom": 0,
+      "filter": [
+        "all",
+        ["==", "$type", "LineString"],
+        ["in", "class", "minor", "service", "track", "path", "residential"],
+        ["in", "surface", "sett", "cobblestone", "unhewn_cobblestone"]
+      ],
+      "layout": {
+        "line-cap": "square",
+        "line-join": "round",
+        "visibility": "visible"
+      },
+      "paint": {
+        "line-color": "rgba(245, 255, 0, 1)",
+        "line-width": {"base": 1.55, "stops": [[4, 0.25], [20, 26]]},
+        "line-dasharray": [2, 2],
+        "line-offset": 4
+      }
+    },
+    {
+      "id": "road_residential",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "minzoom": 0,
+      "maxzoom": 24,
+      "filter": [
+        "all",
+        ["==", "$type", "LineString"],
+        ["==", "class", "residential"]
+      ],
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round",
+        "visibility": "none"
+      },
+      "paint": {
+        "line-color": "rgba(0, 100, 255, 1)",
+        "line-width": {"base": 1.55, "stops": [[4, 0.25], [20, 30]]}
+      }
+    },
+    {
+      "id": "road_minor",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "minzoom": 0,
+      "filter": [
+        "all",
+        ["==", "$type", "LineString"],
+        ["in", "class", "minor", "service"]
+      ],
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round",
+        "visibility": "none"
+      },
+      "paint": {
+        "line-color": "rgba(18, 32, 159, 1)",
+        "line-width": {"base": 1.55, "stops": [[4, 0.25], [20, 30]]}
+      }
+    },
+    {
+      "id": "place_town",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "place",
+      "layout": {
+        "text-font": ["Roboto Condensed Regular"],
+        "text-field": "{name}",
+        "symbol-placement": "point",
+        "visibility": "none"
+      },
+      "paint": {"text-color": "rgba(0, 255, 253, 1)"}
+    }
+  ],
+  "id": "basic",
+  "owner": "Marcus Jaschen"
+}
