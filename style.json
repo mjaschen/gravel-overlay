@@ -22,7 +22,7 @@
       "paint": {"background-color": "rgba(51, 42, 56, 1)"}
     },
     {
-      "id": "track_gravel_perfect-case",
+      "id": "track_gravel_perfect_surface-case",
       "type": "line",
       "source": "openmaptiles",
       "source-layer": "transportation",
@@ -31,7 +31,6 @@
         ["==", "$type", "LineString"],
         ["==", "class", "track"],
         ["in", "tracktype", "grade2", "grade3"],
-        ["in", "smoothness", "good", "intermediate", "bad"],
         ["in", "surface", "gravel", "compacted", "fine_gravel"]
       ],
       "layout": {"line-cap": "square", "line-join": "bevel"},
@@ -43,7 +42,7 @@
       }
     },
     {
-      "id": "track_gravel_perfect",
+      "id": "track_gravel_perfect_surface",
       "type": "line",
       "source": "openmaptiles",
       "source-layer": "transportation",
@@ -52,7 +51,6 @@
         ["==", "$type", "LineString"],
         ["==", "class", "track"],
         ["in", "tracktype", "grade2", "grade3"],
-        ["in", "smoothness", "good", "intermediate", "bad"],
         ["in", "surface", "gravel", "compacted", "fine_gravel"]
       ],
       "layout": {"line-cap": "square", "line-join": "bevel"},
@@ -64,7 +62,7 @@
       }
     },
     {
-      "id": "track_gravel_perfect-alt-case",
+      "id": "track_gravel_perfect_smoothness-case",
       "type": "line",
       "source": "openmaptiles",
       "source-layer": "transportation",
@@ -84,7 +82,7 @@
       }
     },
     {
-      "id": "track_gravel_perfect-alt",
+      "id": "track_gravel_perfect_smoothness",
       "type": "line",
       "source": "openmaptiles",
       "source-layer": "transportation",
@@ -238,6 +236,30 @@
       }
     },
     {
+      "id": "path_gravel_ok",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "filter": [
+        "all",
+        ["==", "$type", "LineString"],
+        ["in", "class", "path"],
+        ["in", "smoothness", "good", "intermediate", "bad"],
+        ["!in", "surface", "gravel", "fine_gravel", "compacted"]
+      ],
+      "layout": {
+        "line-cap": "square",
+        "line-join": "bevel",
+        "visibility": "visible"
+      },
+      "paint": {
+        "line-color": "rgba(235, 6, 158, 1)",
+        "line-dasharray": [1, 1],
+        "line-width": {"base": 1.55, "stops": [[4, 0.25], [20, 10]]},
+        "line-offset": 4
+      }
+    },
+    {
       "id": "path_gravel_perfect-case",
       "type": "line",
       "source": "openmaptiles",
@@ -286,26 +308,46 @@
       }
     },
     {
-      "id": "path_gravel_ok",
+      "id": "road_minor",
       "type": "line",
       "source": "openmaptiles",
       "source-layer": "transportation",
+      "minzoom": 0,
       "filter": [
         "all",
         ["==", "$type", "LineString"],
-        ["in", "class", "path"],
-        ["in", "smoothness", "good", "intermediate", "bad"]
+        ["in", "class", "minor", "service"]
       ],
       "layout": {
-        "line-cap": "square",
-        "line-join": "bevel",
-        "visibility": "visible"
+        "line-cap": "round",
+        "line-join": "round",
+        "visibility": "none"
       },
       "paint": {
-        "line-color": "rgba(235, 6, 158, 1)",
-        "line-dasharray": [2, 1],
-        "line-width": {"base": 1.55, "stops": [[4, 0.25], [20, 15]]},
-        "line-offset": 4
+        "line-color": "rgba(18, 32, 159, 1)",
+        "line-width": {"base": 1.55, "stops": [[4, 0.25], [20, 20]]}
+      }
+    },
+    {
+      "id": "road_residential",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "minzoom": 0,
+      "maxzoom": 24,
+      "filter": [
+        "all",
+        ["==", "$type", "LineString"],
+        ["==", "class", "residential"]
+      ],
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round",
+        "visibility": "none"
+      },
+      "paint": {
+        "line-color": "rgba(0, 100, 255, 1)",
+        "line-width": {"base": 1.55, "stops": [[4, 0.25], [20, 30]]}
       }
     },
     {
@@ -356,49 +398,6 @@
       }
     },
     {
-      "id": "road_residential",
-      "type": "line",
-      "source": "openmaptiles",
-      "source-layer": "transportation",
-      "minzoom": 0,
-      "maxzoom": 24,
-      "filter": [
-        "all",
-        ["==", "$type", "LineString"],
-        ["==", "class", "residential"]
-      ],
-      "layout": {
-        "line-cap": "round",
-        "line-join": "round",
-        "visibility": "none"
-      },
-      "paint": {
-        "line-color": "rgba(0, 100, 255, 1)",
-        "line-width": {"base": 1.55, "stops": [[4, 0.25], [20, 30]]}
-      }
-    },
-    {
-      "id": "road_minor",
-      "type": "line",
-      "source": "openmaptiles",
-      "source-layer": "transportation",
-      "minzoom": 0,
-      "filter": [
-        "all",
-        ["==", "$type", "LineString"],
-        ["in", "class", "minor", "service"]
-      ],
-      "layout": {
-        "line-cap": "round",
-        "line-join": "round",
-        "visibility": "none"
-      },
-      "paint": {
-        "line-color": "rgba(18, 32, 159, 1)",
-        "line-width": {"base": 1.55, "stops": [[4, 0.25], [20, 30]]}
-      }
-    },
-    {
       "id": "place_town",
       "type": "symbol",
       "source": "openmaptiles",
@@ -409,7 +408,11 @@
         "symbol-placement": "point",
         "visibility": "none"
       },
-      "paint": {"text-color": "rgba(0, 255, 253, 1)"}
+      "paint": {
+        "text-color": "rgba(0, 255, 253, 1)",
+        "text-halo-color": "rgba(0, 0, 0, 1)",
+        "text-halo-width": 0.5
+      }
     }
   ],
   "id": "basic",
