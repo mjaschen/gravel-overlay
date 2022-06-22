@@ -308,6 +308,43 @@
       }
     },
     {
+      "id": "rail_debug",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "filter": ["all", ["==", "$type", "LineString"], ["in", "class", "rail"]],
+      "layout": {"visibility": "none"},
+      "paint": {"line-color": "rgba(28, 160, 210, 0.48)"}
+    },
+    {
+      "id": "road_debug",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "filter": [
+        "all",
+        ["==", "$type", "LineString"],
+        [
+          "in",
+          "class",
+          "motorway",
+          "trunk",
+          "primary",
+          "secondary",
+          "tertiary",
+          "minor",
+          "residential",
+          "track",
+          "path"
+        ]
+      ],
+      "layout": {"visibility": "visible"},
+      "paint": {
+        "line-color": "rgba(204, 204, 204, 1)",
+        "line-width": {"stops": [[10, 0.5], [12, 1]]}
+      }
+    },
+    {
       "id": "road_minor",
       "type": "line",
       "source": "openmaptiles",
@@ -413,6 +450,20 @@
         "text-halo-color": "rgba(0, 0, 0, 1)",
         "text-halo-width": 0.5
       }
+    },
+    {
+      "id": "water_area",
+      "type": "fill",
+      "source": "openmaptiles",
+      "source-layer": "water",
+      "paint": {"fill-color": "rgba(121, 209, 250, 1)"}
+    },
+    {
+      "id": "water_way",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "waterway",
+      "paint": {"line-color": "rgba(121, 209, 250, 1)"}
     }
   ],
   "id": "basic",
