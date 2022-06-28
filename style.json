@@ -10,7 +10,10 @@
     "openmaptiles:mapbox:source:url": "mapbox://openmaptiles.4qljc88t"
   },
   "sources": {
-    "openmaptiles": {"type": "vector", "url": "http://localhost:8090"}
+    "openmaptiles": {
+      "type": "vector",
+      "url": "https://map-tiles.m11n.de/gravel/vector/m11n/data/v3.json"
+    }
   },
   "sprite": "https://openmaptiles.github.io/osm-bright-gl-style/sprite",
   "glyphs": "https://api.maptiler.com/fonts/{fontstack}/{range}.pbf?key={key}",
@@ -191,7 +194,9 @@
         "all",
         ["==", ["geometry-type"], "LineString"],
         ["==", ["get", "class"], "track"],
-        ["match", ["get", "tracktype"], ["grade2"], true, false]
+        ["match", ["get", "tracktype"], ["grade2"], true, false],
+        ["!", ["has", "surface"]],
+        ["!", ["has", "smoothness"]]
       ],
       "layout": {
         "line-cap": "butt",
@@ -217,7 +222,9 @@
         "all",
         ["==", ["geometry-type"], "LineString"],
         ["==", ["get", "class"], "track"],
-        ["match", ["get", "tracktype"], ["grade2"], true, false]
+        ["match", ["get", "tracktype"], ["grade2"], true, false],
+        ["!", ["has", "surface"]],
+        ["!", ["has", "smoothness"]]
       ],
       "layout": {
         "line-cap": "butt",
@@ -571,7 +578,7 @@
       "layout": {
         "line-cap": "square",
         "line-join": "bevel",
-        "visibility": "visible"
+        "visibility": "none"
       },
       "paint": {
         "line-color": "rgba(255, 255, 255, 1)",
@@ -601,7 +608,7 @@
       "layout": {
         "line-cap": "square",
         "line-join": "bevel",
-        "visibility": "visible"
+        "visibility": "none"
       },
       "paint": {
         "line-color": "rgba(235, 6, 158, 1)",
