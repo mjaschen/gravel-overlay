@@ -15,7 +15,7 @@ $(HOME)/Downloads/gravel_overlay.json:
 	@true
 
 gravel-style.json: style.json
-	sed -e 's/http:\/\/gravel:8080/https:\/\/map-tiles.m11n.de\/gravel\/vector\/m11n\/data\/v3.json/' $< > $@
+	sed -e 's/http:\/\/gravel:8080\/data\/v3.json/https:\/\/map-tiles.m11n.de\/gravel\/vector\/m11n\/data\/v3.json/' $< > $@
 
 .PHONY: install-in-bikerouter
 install-in-bikerouter: gravel-style.json
