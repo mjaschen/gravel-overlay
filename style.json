@@ -622,6 +622,13 @@
           "horrible",
           "very_horrible",
           "impassable"
+        ],
+        [
+            "!in",
+            "surface",
+            "sett",
+            "cobblestone",
+            "unhewn_cobblestone"
         ]
       ],
       "layout": {
@@ -651,6 +658,13 @@
           "horrible",
           "very_horrible",
           "impassable"
+        ],
+        [
+            "!in",
+            "surface",
+            "sett",
+            "cobblestone",
+            "unhewn_cobblestone"
         ]
       ],
       "layout": {
