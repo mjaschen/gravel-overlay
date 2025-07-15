@@ -8,7 +8,13 @@
 
 ## Development
 
-- Upload `style.json` in Maputnik
+- Start Maputnik: `./maputnik`
+- Open Maputnik in browser: [http://localhost:8000](http://localhost:8000)
+- Upload `style.json` in Maputnik: "Open" → "Upload Style" → `style.json`
+- Enter tile server URL in "Data Sources", e.g. `https://tiles.bikerouter.de/services/gravel/`
+- switch to *inspect* view: "View" → "Inspect" → move to area where data is available on the tile server (e.g. Europe)
+- zoom to at least level 11
+- switch to *map* view: "View" → "Map"
 - Edit
 - Export → Download
 - `make style.json` copies downloaded file from `~/Downloads` to `./style.json`
