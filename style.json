@@ -31,7 +31,11 @@
       "source-layer": "transportation",
       "filter": ["all", ["==", "$type", "LineString"], ["in", "class", "rail"]],
       "layout": {"visibility": "none"},
-      "paint": {"line-color": "rgba(144, 144, 144, 1)"}
+      "paint": {
+        "line-color": "rgba(75, 75, 75, 1)",
+        "line-dasharray": [4, 2],
+        "line-width": 1.5
+      }
     },
     {
       "id": "debug_road",
@@ -51,14 +55,16 @@
           "tertiary",
           "minor",
           "residential",
+          "service",
           "track",
           "path"
         ]
       ],
       "layout": {"visibility": "none"},
       "paint": {
-        "line-color": "rgba(204, 204, 204, 1)",
-        "line-width": {"stops": [[10, 0.5], [12, 1]]}
+        "line-color": "rgba(100, 100, 100, 1)",
+        "line-width": {"stops": [[10, 0.5], [12, 1]]},
+        "line-dasharray": [2, 1]
       }
     },
     {
@@ -623,13 +629,7 @@
           "very_horrible",
           "impassable"
         ],
-        [
-            "!in",
-            "surface",
-            "sett",
-            "cobblestone",
-            "unhewn_cobblestone"
-        ]
+        ["!in", "surface", "sett", "cobblestone", "unhewn_cobblestone"]
       ],
       "layout": {
         "line-cap": "square",
@@ -659,13 +659,7 @@
           "very_horrible",
           "impassable"
         ],
-        [
-            "!in",
-            "surface",
-            "sett",
-            "cobblestone",
-            "unhewn_cobblestone"
-        ]
+        ["!in", "surface", "sett", "cobblestone", "unhewn_cobblestone"]
       ],
       "layout": {
         "line-cap": "square",
