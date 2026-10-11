@@ -1,0 +1,35 @@
+name: Check Style
+
+on:
+  push:
+    branches:
+      - "**"
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  validate:
+    name: Validate Style
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: "24"
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.x"
+
+      - name: Validate with MapLibre style spec
+        run: npx --yes -p @maplibre/maplibre-gl-style-spec gl-style-validate style.json
+
+      - name: Validate with Mapbox style spec
+        run: npx --yes -p @mapbox/mapbox-gl-style-spec gl-style-validate style.json
+
+      - name: Validate layer IDs
+        run: python3 -c "import json; s=json.load(open('style.json')); assert len(s['layers']) == len(set(l['id'] for l in s['layers']))"

@@ -19,6 +19,20 @@
 - Export → Download
 - `make style.json` copies downloaded file from `~/Downloads` to `./style.json`
 
+## Testing
+
+Run style validation and tests locally:
+
+```shell
+make test
+```
+
+This runs:
+
+- MapLibre GL style specification validator (`@maplibre/maplibre-gl-style-spec`)
+- Mapbox GL style specification validator (`@mapbox/mapbox-gl-style-spec`)
+- Layer ID uniqueness validation
+
 ## Deployment
 
 ```shell

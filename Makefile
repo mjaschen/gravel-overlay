@@ -8,6 +8,13 @@ serve-testmap:
 browse-testmap:
 	open http://localhost:8092/map.html
 
+.PHONY: test
+test:
+	npx --yes -p @maplibre/maplibre-gl-style-spec gl-style-validate style.json
+	npx --yes -p @mapbox/mapbox-gl-style-spec gl-style-validate style.json
+	python3 -c "import json; s=json.load(open('style.json')); assert len(s['layers']) == len(set(l['id'] for l in s['layers']))"
+
+
 style.json: $(HOME)/Downloads/gravel_overlay.json
 	test -f $< && mv -v $< $@ || true
 
